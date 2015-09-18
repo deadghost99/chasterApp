@@ -3,32 +3,31 @@ var express = require('express');
 var router = express.Router();
 
 router.route('/bag')
-	//creates a new item
+	//creates a new bag
 	.post(function(req, res){
-        console.log('i got post new Item request');
-        res.send({message:"create a new item in the database"});
-	})
-
-	//gets all item
-	.get(function(req, res){
-		console.log('i got get list all item request');
-        res.send({message:"get all item in the database"});
+        res.send({message:"add new bag"});
 	});
 
 router.route('/bag/:id')
-    //get item by id
+    //get bag by id
     .get(function(req, res){
-        res.send({message:"get item by id: "+ req.params.id +" from databases"});
-    })
+        res.send({message:'get bag by id: '+ req.params.id +' and all its items from databases'});
+    });
 
-    //update item
+router.route('/bag/:id/:item_id/:qty')
+    //update quantity item at bag
     .put(function(req,res){
-        res.send({message:"change data item by id: "+ req.params.id +" at databases"});
-    })
+        res.send({message:'change item with id: '+ req.params.item_id +' quantity to: '+ req.params.qty +' at bag with id: '+ req.params.id +' at databases'});
+    });
 
-    //delete item
+router.route('/bag/:id/:item_id')
+    //add item to bag
+    .put(function(req,res){
+        return res.send({message:'add an item with id: '+ req.params.item_id +' to bag '+ req.params.id});
+    })
+    //delete item at bag
     .delete(function(req,res){
-		return res.send({message:'delete an existing item by using param id: ' + req.params.id})
+		return res.send({message:'delete an existing item by id: ' + req.params.item_id+ ' in bag with id:'+ req.params.id});
 	});
     
 module.exports = router;
