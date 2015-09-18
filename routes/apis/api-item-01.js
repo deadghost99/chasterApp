@@ -18,17 +18,17 @@ router.route('/item')
 router.route('/item/:id')
     //get item by id
     .get(function(req, res){
-        res.send({message:"get item by id: "+ req.param.id +" from databases"});
+        res.send({message:"get item by id: "+ req.params.id +" from databases"});
     })
 
     //update item
     .put(function(req,res){
-        res.send({message:"change data item by id: "+ req.param.id +" at databases"});
+        res.send({message:"change data item by id: "+ req.params.id +" at databases"});
     })
 
     //delete item
     .delete(function(req,res){
-		return res.send({message:'delete an existing item by using param id: ' + req.param.id})
+		return res.send({message:'delete an existing item by using param id: ' + req.params.id})
 	});
     
 module.exports = router;
