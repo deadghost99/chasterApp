@@ -11,5 +11,8 @@
 var Item = require('../models/item.js');
  
 exports.create = function(req, res) {
-    new Item({title: req.body.title, author: req.body.author}).save();
+    item = new Item({name: req.body.name, about: req.body.about, price: req.body.price});
+    item.save(function(err) {
+        if (err) return handleError(err);
+    });
 };
