@@ -5,7 +5,7 @@ var Item = require('../models/item-model.js');
 
 var bagSchema = new mongoose.Schema({
 	sn: String,
-    items: [{Item , quantity: Number}],
+    items: [{new Item , quantity: Number}],
     price: String,
 	created_at: {type: Date, default: Date.now},
     lastEdited_at: {type: Date, default: Date.now}
