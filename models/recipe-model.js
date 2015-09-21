@@ -12,3 +12,4 @@ var reciptSchema = new mongoose.Schema({
 });
 
 module.exports = mongoose.model('Recipt', reciptSchema);
+
