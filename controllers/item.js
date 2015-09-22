@@ -16,3 +16,9 @@ exports.create = function(req, res) {
         if (err) return handleError(err);
     });
 };
+
+exports.list = function(req, res) {
+    Item.find(function(err, items) {
+        res.send(items);
+    });
+}
