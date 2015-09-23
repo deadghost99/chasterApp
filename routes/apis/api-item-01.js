@@ -2,7 +2,7 @@
 var express = require('express');
 var router = express.Router();
 
-var itemCtrl = require('../controllers/item01');
+var itemCtrl = require('../../controllers/item01.js');
 
 router.route('/item')
 	//creates a new item
