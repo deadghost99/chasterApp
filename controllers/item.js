@@ -17,6 +17,15 @@ exports.create = function(req, res) {
     });
 };
 
+exports.show = function(req, res) {
+    Item.findById(req.params.id, function(err, item) {
+        if(err){
+            res.send(err);
+        };
+        res.json(item);
+    })
+};
+
 exports.list = function(req, res) {
     Item.find(function(err, items) {
         if(err){
@@ -25,12 +34,3 @@ exports.list = function(req, res) {
         res.send(items);
     });
 };
-
-exports.show = (function(req, res) {
-    Item.findById(req.params.id, function(err, item) {
-        if(err){
-            res.send(err);
-        };
-        res.json(item);
-    })
-});
