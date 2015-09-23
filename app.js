@@ -11,7 +11,7 @@ var api01 = require('./routes/apis/api-item-01');
 var api02 = require('./routes/apis/api-bag-01');
 var api03 = require('./routes/apis/api-receipt-01');
 
-mongoose.connect(config.db);
+mongoose.connect(config.development.db);
 var routes = require('./routes/index');
 
 var app = express();
