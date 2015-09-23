@@ -41,10 +41,10 @@ exports.update = function(req, res){
         if(err)
             res.send(err);
         
-        item.name: req.body.name;
-        item.about: req.body.about;
-        item.price: req.body.price;
-        item.lastEdited_at: Date.now;
+        item.name= req.body.name;
+        item.about= req.body.about;
+        item.price= req.body.price;
+        item.lastEdited_at= Date.now;
 
 		item.save(function(err, item){
             if(err)
