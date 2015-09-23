@@ -31,6 +31,7 @@ exports.list = function(req, res) {
         if(err){
             res.send(err);
         };
+        console.log(items);
         res.send(items);
     });
 };
