@@ -11,9 +11,11 @@
 var Item = require('../models/item.js');
  
 exports.create = function(req, res) {
+    console.log('debug 00 ');
     item = new Item({name: req.body.name, about: req.body.about, price: req.body.price});
     item.save(function(err) {
         if (err) return handleError(err);
+        
     });
 };
 

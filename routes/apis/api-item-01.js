@@ -7,6 +7,7 @@ var itemCtrl = require('../../controllers/item01.js');
 router.route('/item')
 	//creates a new item
 	.post(function(req, res){
+        console.log('data');
         itemCtrl.create(req,res);
 	})
 
