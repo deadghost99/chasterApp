@@ -4,7 +4,7 @@ var Schema = mongoose.Schema;
 var itemSchema = new mongoose.Schema({
 	name: String,
     about: String,
-    price: String,
+    price: Number,
 	created_at: {type: Date, default: Date.now},
     lastEdited_at: {type: Date, default: Date.now}
 });
