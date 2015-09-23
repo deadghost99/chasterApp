@@ -11,11 +11,11 @@
 var Item = require('../models/item.js');
  
 exports.create = function(req, res) {
-    console.log('debug 00 ');
     item = new Item({name: req.body.name, about: req.body.about, price: req.body.price});
-    item.save(function(err) {
-        if (err) return handleError(err);
+    item.save(function(err, item) {
+        if (err) return handleError(500, err);
         
+        return res.json(item);
     });
 };
 
@@ -46,7 +46,7 @@ exports.update = function(req, res){
         item.name= req.body.name;
         item.about= req.body.about;
         item.price= req.body.price;
-        item.lastEdited_at= Date.now;
+        item.lastEdited_at= Date.now();
 
 		item.save(function(err, item){
             if(err)
