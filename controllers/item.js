@@ -19,6 +19,18 @@ exports.create = function(req, res) {
 
 exports.list = function(req, res) {
     Item.find(function(err, items) {
+        if(err){
+            res.send(err);
+        };
         res.send(items);
     });
-}
+};
+
+exports.show = (function(req, res) {
+    Item.findById(req.params.id, function(err, item) {
+        if(err){
+            res.send(err);
+        };
+        res.json(item);
+    })
+});
