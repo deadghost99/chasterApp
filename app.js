@@ -30,7 +30,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/api.01', api01);
 app.use('/api.02', api02);
-app.use('/api.03', api04);
+app.use('/api.03', api03);
 app.use('/', routes);
 
 // catch 404 and forward to error handler
