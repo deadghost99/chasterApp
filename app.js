@@ -4,10 +4,14 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var mongoose = require('mongoose'); 
+var config = require('./config')
 
 var api01 = require('./routes/apis/api-item-01');
 var api02 = require('./routes/apis/api-bag-01');
 var api03 = require('./routes/apis/api-receipt-01');
+
+mongoose.connect(config.db);
 var routes = require('./routes/index');
 
 var app = express();
