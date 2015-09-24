@@ -10,7 +10,6 @@
 */
 
 var Bag = require('../models/bag.js');
-var BagItem = require('../models/bag-item.js');
 
 
 exports.create = function(req, res) {
