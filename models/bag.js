@@ -1,11 +1,18 @@
 var mongoose = require('mongoose'),
-    Schema = mongoose.Schema;
+    Schema = mongoose.Schema,
+    ObjectId = Schema.ObjectId;
 
-var Item = require('../models/item.js');
 
 var bagSchema = new mongoose.Schema({
 	sn: String,
-    items: [{item: new Item , quantity: Number}],
+    items: [{item: {
+                        _id: String,
+                        name: String,
+                        price: Number;
+                    },
+             quantity: Number, 
+             total: Number;
+            }],
     price: String,
 	created_at: {type: Date, default: Date.now},
     lastEdited_at: {type: Date, default: Date.now}
