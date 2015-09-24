@@ -73,7 +73,7 @@ exports.clean = function(req, res) {
 };
 
 exports.reset = function(req, res) {
-    BagItem.remove({bag_id: req.body.bag_id}, function(err) {
+    BagItem.remove({bag_id: req.params.id}, function(err) {
         if (err)
             res.send(err);
         res.json("deleted :(");

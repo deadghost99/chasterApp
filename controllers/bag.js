@@ -2,10 +2,7 @@
    Exports 3 methods:
    * create - Create new Bag
    * show - Get Bag data by bag Id
-   * put - Edit Item data in Bag By Bag Id and Item Id and qty
-   * take - Delete Item in Bag
-   + clean - Delete all Item in Bag where qty = 0
-   * reset - Delete all Item in Bag 
+   * lastEdited - change time last_edited
    * delete - Delete bag
 */
 
@@ -22,4 +19,41 @@ exports.create = function(req, res) {
         
         return res.json(bag);
     });
+};
+
+exports.show = function(req, res) {
+    Bag.findById(req.params.id, function(err, bag) {
+        if(err){
+            res.send(err);
+        };
+        res.json(bag);
+    })
+};
+
+exports.lastEdited = function(req, res) {
+    Bag.findById(req.params.bagid, function(err, bag) {
+        if(err)
+            res.send(err);
+        
+        bag.lastEdited_at = Date.no();
+        
+        bag.save(function(err, bag){
+            if(err)
+                res.send(err);
+            
+            res.json(bag);
+        });
+    }) 
+};
+
+exports.delete = function(req, res) {
+    
+    bagItemCtrl.reset;
+    
+    Bag.remove({_id: req.params.id}, function(err) {
+        if (err)
+            res.send(err);
+        res.json("deleted :(");
+	});
+    
 };
