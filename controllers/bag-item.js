@@ -25,3 +25,57 @@ exports.put = function(req, res) {
         return res.json(bagItem);
     });
 };
+
+exports.list = function(req, res) {
+    BagItem.find(function(err, bagItems) {
+        if(err){
+            res.send(err);
+        };
+        console.log(bagItems);
+        res.send(bagItems);
+    });
+};
+
+exports.update = function(req, res) {
+    BagItem.findById(req.params.id, function(err, bagItem){
+        if(err)
+            res.send(err);
+        
+        bagItem.name= req.body.name;
+        bagItem.about= req.body.about;
+        bagItem.price= req.body.price;
+        bagItem.qty= req.body.qty;
+        bagItem.total= (req.body.price * req.body.qty);
+        
+        bagItem.save(function(err, bagItem){
+            if(err)
+                res.send(err);
+            
+            res.json(bagItem);
+        });
+    });
+};
+
+exports.take = function(req, res) {
+    BagItem.remove({_id: req.params.id}, function(err) {
+        if (err)
+            res.send(err);
+        res.json("deleted :(");
+	});
+};
+
+exports.clean = function(req, res) {
+    BagItem.remove({bag_id: req.body.bag_id, qty: 0}, function(err) {
+        if (err)
+            res.send(err);
+        res.json("deleted :(");
+	});
+};
+
+exports.reset = function(req, res) {
+    BagItem.remove({bag_id: req.body.bag_id}, function(err) {
+        if (err)
+            res.send(err);
+        res.json("deleted :(");
+	});
+}
