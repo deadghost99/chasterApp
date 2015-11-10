@@ -7,8 +7,8 @@ router.route('/file')
 	.post(function(req, res){
         console.log('data');
         fileCtrl.create(req,res);
-	})
-
+	});
+/*
 	//gets all file
 	.get(function(req, res){
 		fileCtrl.list(req,res);
@@ -29,5 +29,5 @@ router.route('/file/:id')
     .delete(function(req,res){
 		fileCtrl.delete(req,res);
 	});
-    
+*/
 module.exports = router;
