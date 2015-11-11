@@ -4,12 +4,13 @@ var path = require('path');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var mongoose = require('mongoose'); 
-var config = require('./config')
+var mongoose = require('mongoose');
+var config = require('./config');
 
-var api01 = require('./routes/apis/api-item-01');
-var api02 = require('./routes/apis/api-bag-01');
-var api03 = require('./routes/apis/api-receipt-01');
+//var api01 = require('./routes/apis/api-item-01');
+//var api02 = require('./routes/apis/api-bag-01');
+//var api03 = require('./routes/apis/api-receipt-01');
+var apiFile = require('./routes/apis/api-file');
 
 mongoose.connect(config.development.db);
 var routes = require('./routes/index');
@@ -28,11 +29,10 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-
-
-app.use('/api.01', api01);
-app.use('/api.02', api02);
-app.use('/api.03', api03);
+//app.use('/api.01', api01);
+//app.use('/api.02', api02);
+//app.use('/api.03', api03);
+app.use('/files', apiFile);
 app.use('/', routes);
 
 // catch 404 and forward to error handler
